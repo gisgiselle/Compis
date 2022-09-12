@@ -50,4 +50,9 @@ Thumbs.db
 
 __pycache__/
 venv/
-generated/
+*.interp
+*.tokens
+*Lexer.py
+*Parser.py
+*Visitor.py
+*Listener.py
