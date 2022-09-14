@@ -1,7 +1,8 @@
 from antlr4 import CommonTokenStream, FileStream
 
-from antlr.generated.ExprLexer import ExprLexer
-from antlr.generated.ExprParser import ExprParser
+from antlr.ExprLexer import ExprLexer
+from antlr.ExprParser import ExprParser
+
 
 def main():
     fs = FileStream('input.txt')
@@ -12,7 +13,6 @@ def main():
     cst = parser.prog()
 
     print(cst)
-
 
 
 if __name__ == '__main__':
