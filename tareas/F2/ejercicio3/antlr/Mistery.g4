@@ -6,7 +6,7 @@ prog:	class *;
 // main (x, y, z) {}
 // donde los parámetros son IDs separados por coma, completa la regla params para reconocer esa sintaxis
 
-class:	ID '(' params ')' '´{' '}'
+class:	ID '(' params ')' '{' '}'
     ;
 
 params:
