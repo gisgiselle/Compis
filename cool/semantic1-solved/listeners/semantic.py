@@ -32,6 +32,7 @@ class SemanticListener(coolListener):
             raise BadVariableName()
 
     def exitProgram(self, ctx: coolParser.ProgramContext):
+        #test_nomain
         if not self.main:
             raise NoMain()
 
