@@ -12,8 +12,8 @@ class HierarchyNamesListener(coolListener):
     def enterKlass(self, ctx: coolParser.KlassContext):
         #test_redefinedclass
         try:
-            lookupClass(ctx.TYPE(0).getText())
-            raise Exception
+            if lookupClass(ctx.TYPE(0).getText()) is None:
+                raise Exception
         except KeyError:
             #Bien aquí
             pass

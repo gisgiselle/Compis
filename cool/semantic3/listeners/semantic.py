@@ -91,7 +91,9 @@ class SemanticListener(coolListener):
     def exitPri(self, ctx:coolParser.PriContext):
         #¡Este paso es necesario porque en la gramática hay una regla que consolida todas las literales!
         #Es necesario para darles la misma precedencia
-        ctx.type = ctx.primary().type
+        #Descomentar la siguiente línea una vez que los nodos de la regla primary ya tengan tipo
+        #ctx.type = ctx.primary().type
+        pass
 
     def exitAdd(self, ctx:coolParser.AddContext):
         #test_badarith
