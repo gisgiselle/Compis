@@ -51,7 +51,7 @@ class SemanticListener(coolListener):
             raise BadClassName()
 
         #test_dupformals
-        self.scopes[ctx.ID()] = lookupClass(ctx.TYPE().getText())
+        self.scopes[ctx.ID().getText()] = lookupClass(ctx.TYPE().getText())
 
     def enterLet(self, ctx:coolParser.LetContext):
         #Abro el scope de variables locales en el let
@@ -68,7 +68,7 @@ class SemanticListener(coolListener):
         if ctx.ID().getText() == 'self':
             raise BadVariableName()
 
-        self.scopes[ctx.ID()] = lookupClass(ctx.TYPE().getText())
+        self.scopes[ctx.ID().getText()] = lookupClass(ctx.TYPE().getText())
 
     def exitLet_decl(self, ctx:coolParser.Let_declContext):
         #test_letbadinit
