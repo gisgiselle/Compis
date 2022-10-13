@@ -87,7 +87,7 @@ def test_badequalitytest2():
         c('badequalitytest2.cool')
 
 def test_badwhilebody():
-    with pytest.raises(BadType):
+    with pytest.raises(MethodDoesNotExist):
         c('badwhilebody.cool')
 
 def test_badwhilecond():
