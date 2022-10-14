@@ -12,6 +12,9 @@ class HierarchyException(Exception):
 def lookupClass(name):
     return _allClasses[name]
 
+def clearAllClasses():
+    global _allClasses
+    _allClasses = {}
 
 class Method():
     """
