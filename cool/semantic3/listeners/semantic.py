@@ -82,7 +82,7 @@ class SemanticListener(coolListener):
     def enterAssign(self, ctx: coolParser.AssignContext):
         #test_selfassignment
         if ctx.ID().getText() == 'self':
-            raise SelfAssignment()
+            raise BadVariableName()
 
     # Base para el algoritmo bottom-up
     def enterInt(self, ctx:coolParser.IntContext):
