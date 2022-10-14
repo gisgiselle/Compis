@@ -3,15 +3,12 @@ import pytest
 from main import compile
 from main import PATH
 from util.exceptions import *
-from util.structure import clearAllClasses
 
 RES_PATH = '../../resources/semantic/input/{}'
 
 
 def c(file): compile(RES_PATH.format(file))
 
-def setup_function():
-    clearAllClasses()
 
 def test_anattributenamedself():
     with pytest.raises(BadAttributeName):
