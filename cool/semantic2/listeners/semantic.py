@@ -18,6 +18,8 @@ class SemanticListener(coolListener):
         if ctx.ID().getText() == 'self':
             raise BadAttributeName()
 
+
+
     def enterKlass(self, ctx: coolParser.KlassContext):
 
         #test_nomain
@@ -41,6 +43,13 @@ class SemanticListener(coolListener):
         #Crear el scope de variables, se asocia a la klass para buscar también en atributos
         self.scopes = SymbolTableWithScopes(self.klass)
 
+    ''' PROBLEMA 8: MISSING CLASS'''
+
+    def exitKlass(self, ctx:coolParser.KlassContext):
+        try: ctx.TYPE(0).getText() == lookupClass(ctx.TYPE(0).getText())
+
+        except KeyError:
+            raise InvalidInheritance
     def enterMethod(self, ctx:coolParser.MethodContext):
         #params contiene un arreglo de formal, que tiene ID y el TYPE, lo convierto a Klass para usarlo más adelante
         params = []
@@ -64,12 +73,21 @@ class SemanticListener(coolListener):
         #Abro el scope de variables locales en el let
         self.scopes.openScope()
 
+
     def exitLet(self, ctx:coolParser.LetContext):
         #Cierro el scope de variables locales en el let
         #BUG: deberían ir anidadas, pero me parece en esta etapa no hay pruebas así
         #Ejemplo: let x:Int <-5, y:Int <- x in x + y;
         self.scopes.closeScope()
 
+''' PROBLEMA 9 OUT OF SCOPE'''
+
+    def exitVar(self, ctx:coolParser.VarContext):
+        #if not (ctx.expr(0).type.name in self.scopes.dict_list):
+        try:
+            ctx.type = self.scopes[ctx.ID().getText()]
+        except KeyError:
+            raise BadVariableName
     def enterLet_decl(self, ctx: coolParser.Let_declContext):
         #test_letself
         if ctx.ID().getText() == 'self':
@@ -97,4 +115,9 @@ class SemanticListener(coolListener):
     # Base para el algoritmo bottom-up
     def enterInt(self, ctx:coolParser.IntContext):
         ctx.type = lookupClass('Int')
+
+
+
+
+
 

@@ -102,9 +102,9 @@ def test_selftyperedeclared():
 #     with pytest.raises(BadClassName):
 #         c('missingclass.cool')
 #
-# def test_outofscope():
-#     with pytest.raises(BadVariableName):
-#         c('outofscope.cool')
+def test_outofscope():
+    with pytest.raises(BadVariableName):
+        c('outofscope.cool')
 #
 # def test_redefinedclass():
 #     with pytest.raises(BadClassName):
