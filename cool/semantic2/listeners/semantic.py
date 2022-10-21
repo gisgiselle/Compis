@@ -12,7 +12,6 @@ class SemanticListener(coolListener):
         #Crear estructura inicial de clases
         setBaseKlasses()
 
-
     def exitAttribute(self, ctx: coolParser.AttributeContext):
         #test_anattributenamedself
         if ctx.ID().getText() == 'self':
