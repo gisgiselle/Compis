@@ -3,8 +3,42 @@ from antlr.coolListener import coolListener
 from antlr.coolParser import coolParser
 from util.structure import lookupClass, SymbolTableWithScopes
 
+'''
+4. BAD ARGS1
+class Main { main() : Object {0}; };
+
+class A {
+      bar() : Object {
+	    (new B).foo(self, 29)
+      };
+};
+
+class B inherits A {
+      foo(b:B, x:Int) : String { "moo" };
+};
+
+'''
+
+'''
+5. BAD DISPTACH 
+class Main { main() : Object {0}; };
+
+class Animal {};
+
+class Cow inherits Animal {
+      moo() : String { "moo" };
+};
+      
+class Blerg {
+      foo() : Object {
+	    let cow : Animal <- new Cow 
+	    in cow.moo()
+      };
+};
 
 
+
+'''
 class SemanticListener(coolListener):
     def __init__(self):
         self.main = False

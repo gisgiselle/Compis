@@ -18,7 +18,6 @@ class SemanticListener(coolListener):
             raise BadAttributeName()
 
 
-
     def enterKlass(self, ctx: coolParser.KlassContext):
 
         #test_nomain
