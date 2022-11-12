@@ -27,6 +27,7 @@ def compile(file):
 
     c = CodeGen(walker, tree)
     save(c.getText(), file)
+    c.generar()
 
 def dummy():
     raise SystemExit(1)

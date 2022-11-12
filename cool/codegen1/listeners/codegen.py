@@ -41,6 +41,7 @@ class CodeGen():
         literales = Literales()
         self.walker.walk(literales, self.tree)
 
+        #INSTRUCCIOENS EN ENSALMBLADOR
         self.result = literales.result +\
                       self.tablaNombres() +\
                       self.tablaModelosConstructores() +\
